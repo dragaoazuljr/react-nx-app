@@ -1,5 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "react-child": "apps/react-child",
+    "react-child-e2e": "apps/react-child-e2e",
+    "react-root": "apps/react-root",
+    "react-root-e2e": "apps/react-root-e2e"
+  }
 }

@@ -1,6 +1,8 @@
 
 
-# ReactWebComponentApp
+# ReactNxApp
+
+A React monorepo app to show how to create a Micro Front-end app using React, Nx and Webpack Module Federation.  
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -49,7 +51,7 @@ Libraries are shareable across libraries and applications. They can be imported 
 
 ## Development server
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `nx run-many --target=serve --projects=react-root,react-child` for a dev server of the react-root and react-child. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

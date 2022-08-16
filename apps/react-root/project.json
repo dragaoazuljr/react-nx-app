@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-root/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/react-root",
+        "index": "apps/react-root/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-root/src/index.ts",
+        "polyfills": "apps/react-root/src/polyfills.ts",
+        "tsConfig": "apps/react-root/tsconfig.app.json",
+        "assets": [
+          "apps/react-root/src/favicon.ico",
+          "apps/react-root/src/assets"
+        ],
+        "styles": ["apps/react-root/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/react-root/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/react-root/src/environments/environment.ts",
+              "with": "apps/react-root/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-root:build",
+        "hmr": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-root:build:development"
+        },
+        "production": {
+          "buildTarget": "react-root:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-root/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/react-root"],
+      "options": {
+        "jestConfig": "apps/react-root/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
